@@ -1,13 +1,13 @@
 package com.exemplo.curso.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-@Entity(name = "usuario")
+@Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = -6879064834271937111L;
@@ -20,10 +20,13 @@ public class Usuario implements Serializable {
     private String telefone;
     private String senha;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public Usuario() {
     }
 
-    public Usuario(Long id,String nome, String email, String telefone, String senha) {
+    public Usuario(Long id, String nome, String email, String telefone, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -70,6 +73,8 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public List<Pedido> getPedidos() { return pedidos; }
 
     @Override
     public boolean equals(Object o) {
