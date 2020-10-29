@@ -2,10 +2,12 @@ package com.exemplo.curso.config;
 
 import com.exemplo.curso.entities.Categoria;
 import com.exemplo.curso.entities.Pedido;
+import com.exemplo.curso.entities.Produto;
 import com.exemplo.curso.entities.Usuario;
 import com.exemplo.curso.entities.enums.PedidoStatus;
 import com.exemplo.curso.repositories.CategoriaRepository;
 import com.exemplo.curso.repositories.PedidoRepository;
+import com.exemplo.curso.repositories.ProdutoRepository;
 import com.exemplo.curso.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +30,9 @@ public class TesteConfig implements CommandLineRunner {
     @Autowired
     CategoriaRepository categoriaRepository;
 
+    @Autowired
+    ProdutoRepository produtoRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -42,9 +47,16 @@ public class TesteConfig implements CommandLineRunner {
         Categoria c2 = new Categoria(null, "Livros");
         Categoria c3 = new Categoria(null, "Informática");
 
+        Produto pr1 = new Produto(null, "Harry Potter", "Livro sobre bruxos ingleses", 35.0, "");
+        Produto pr2 = new Produto(null, "LeNovo Ideapad 330", "Melhor custo x beneficio", 3100.99, "");
+        Produto pr3 = new Produto(null, "Moto One", "Smarphone Motorola", 990.5, "");
+        Produto pr4 = new Produto(null, "The Witcher", "Livro sobre bruxo guerreiro", 49.90, "");
+        Produto pr5 = new Produto(null, "MacBook", "Notebook da Apple", 11000.0, "");
+
         usuarioRepository.saveAll(Arrays.asList(u1, u2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
         categoriaRepository.saveAll(Arrays.asList(c1, c2, c3));
+        produtoRepository.saveAll(Arrays.asList(pr1, pr2, pr3, pr4, pr5));
 
     }
 }
