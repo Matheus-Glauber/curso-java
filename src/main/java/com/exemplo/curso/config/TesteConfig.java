@@ -53,6 +53,12 @@ public class TesteConfig implements CommandLineRunner {
         Produto pr4 = new Produto(null, "The Witcher", "Livro sobre bruxo guerreiro", 49.90, "");
         Produto pr5 = new Produto(null, "MacBook", "Notebook da Apple", 11000.0, "");
 
+        pr1.getCategorias().add(c1);
+        pr2.getCategorias().add(c3);
+        pr3.getCategorias().add(c1);
+        pr4.getCategorias().add(c2);
+        pr5.getCategorias().add(c3);
+
         usuarioRepository.saveAll(Arrays.asList(u1, u2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
         categoriaRepository.saveAll(Arrays.asList(c1, c2, c3));
