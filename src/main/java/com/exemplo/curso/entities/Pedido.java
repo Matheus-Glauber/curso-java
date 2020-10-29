@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 @Entity
-@Table(name = "pedido")
+@Table(name = "pedidos")
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = -3815907090178055677L;
@@ -77,13 +77,11 @@ public class Pedido implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pedido pedido = (Pedido) o;
-        return Objects.equals(id, pedido.id) &&
-                Objects.equals(momento, pedido.momento) &&
-                Objects.equals(cliente, pedido.cliente);
+        return Objects.equals(id, pedido.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, momento, cliente);
+        return Objects.hash(id);
     }
 }
