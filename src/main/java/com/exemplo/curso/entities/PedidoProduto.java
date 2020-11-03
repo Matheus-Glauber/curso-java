@@ -1,6 +1,7 @@
 package com.exemplo.curso.entities;
 
 import com.exemplo.curso.entities.pk.PedidoProdutoPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ public class PedidoProduto implements Serializable {
     private static final long serialVersionUID = 8622296738695664265L;
 
     @EmbeddedId
-    private PedidoProdutoPK id;
+    private PedidoProdutoPK id = new PedidoProdutoPK();
     private Integer quantidade;
     private Double preco;
 
@@ -29,6 +30,7 @@ public class PedidoProduto implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public Pedido getPedido(){
         return id.getPedido();
     }
